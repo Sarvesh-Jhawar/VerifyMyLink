@@ -8,226 +8,174 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
         :root {
-            --primary-color: #007bff;
-            --primary-hover: #0056b3;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
-            --warning-color: #ffc107;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --background-color: #f4f7f6;
-            --border-color: #dee2e6;
-            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+          --primary-color: #007bff;
+          --primary-hover: #0056b3;
+          --success-color: #28a745;
+          --danger-color: #dc3545;
+          --warning-color: #ffc107;
+          --light-color: #f8f9fa;
+          --dark-color: #343a40;
+          --background-color: #f4f7f6;
+          --border-color: #dee2e6;
+          --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            color: var(--dark-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 1rem;
+          font-family: 'Poppins', sans-serif;
+          background-color: var(--background-color);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          margin: 0;
         }
 
         .container {
-            background-color: white;
-            padding: 2rem 2.5rem;
-            border-radius: 15px;
-            box-shadow: var(--box-shadow);
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .container:hover {
-            transform: translateY(-5px);
+          background: #fff;
+          padding: 2rem;
+          border-radius: 15px;
+          box-shadow: var(--box-shadow);
+          max-width: 600px;
+          width: 100%;
+          text-align: center;
         }
 
         h2 {
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            color: var(--dark-color);
+          margin-bottom: 1rem;
+          color: var(--dark-color);
         }
 
         .url-form {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
         }
 
         #urlInput {
-            flex-grow: 1;
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #urlInput:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+          flex-grow: 1;
+          padding: 0.75rem 1rem;
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          font-size: 1rem;
         }
 
         button {
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+          padding: 0.75rem 1.5rem;
+          background: var(--primary-color);
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
         }
 
         button:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-        
-        button:active {
-            transform: translateY(0);
+          background: var(--primary-hover);
         }
 
         .loader {
-            border: 4px solid var(--light-color);
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 1.5rem auto;
-            display: none; /* Initially hidden */
+          border: 4px solid var(--light-color);
+          border-top: 4px solid var(--primary-color);
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+          margin: 1rem auto;
+          display: none;
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
 
-        #result {
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            padding: 1rem;
-            border-radius: 8px;
-            display: none; /* Initially hidden */
-            animation: fadeIn 0.5s ease-in-out;
+        .result-box {
+          margin-top: 1rem;
+          padding: 1rem;
+          border-radius: 8px;
+          display: none;
+          text-align: left;
+          white-space: pre-line;
         }
 
-        #result.safe {
-            background-color: rgba(40, 167, 69, 0.1);
-            color: var(--success-color);
-            border: 1px solid rgba(40, 167, 69, 0.2);
-        }
-
-        #result.unsafe {
-            background-color: rgba(220, 53, 69, 0.1);
-            color: var(--danger-color);
-            border: 1px solid rgba(220, 53, 69, 0.2);
-        }
-
-        #result.error {
-            background-color: rgba(255, 193, 7, 0.1);
-            color: var(--warning-color);
-            border: 1px solid rgba(255, 193, 7, 0.2);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        .safe { border: 1px solid rgba(40,167,69,.2); background: rgba(40,167,69,.1); color: var(--success-color); }
+        .unsafe { border: 1px solid rgba(227, 43, 62, 0.2); background: rgba(211, 46, 62, 0.1); color: var(--danger-color); }
+        .error { border: 1px solid rgba(255,193,7,.2); background: rgba(255,193,7,.1); color: var(--warning-color); }
     </style>
 </head>
 <body>
-
 <main class="container">
     <h2>🔒 URL Safety Checker</h2>
 
     <form id="urlForm" class="url-form">
-        <input type="url" id="urlInput" placeholder="Enter a URL (e.g., https://example.com)" size="50" required>
+        <input type="url" id="urlInput" placeholder="Enter a URL (e.g., https://example.com)" required>
         <button type="submit">Check</button>
     </form>
 
     <div id="loader" class="loader"></div>
-    <p id="result"></p>
+
+    <!-- Separate result boxes -->
+    <div id="vtResult" class="result-box"></div>
+    <div id="googleResult" class="result-box"></div>
 </main>
 
 <script>
     const urlForm = document.getElementById("urlForm");
     const urlInput = document.getElementById("urlInput");
-    const resultEl = document.getElementById("result");
     const loader = document.getElementById("loader");
+    const vtResultEl = document.getElementById("vtResult");
+    const googleResultEl = document.getElementById("googleResult");
 
     urlForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const url = urlInput.value.trim();
+      e.preventDefault();
+      const url = urlInput.value.trim();
+      if (!url) return;
 
-        if (!url) {
-            showResult("Please enter a URL.", "error");
-            return;
-        }
+      vtResultEl.style.display = "none";
+      googleResultEl.style.display = "none";
+      loader.style.display = "block";
 
-        // Reset UI
-        resultEl.style.display = "none";
-        resultEl.className = "";
-        loader.style.display = "block";
+      const formData = new URLSearchParams();
+      formData.append("url", url);
 
-        const formData = new URLSearchParams();
-        formData.append("url", url);
+      try {
+        const response = await fetch("http://localhost:8081/check", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: formData
+        });
 
-        try {
-            const response = await fetch("http://localhost:8081/check", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: formData
-            });
+        if (!response.ok) throw new Error("HTTP error " + response.status);
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
+        const resultJson = await response.json();
 
-            const resultText = await response.text();
-            
-            // Simple logic to determine result type for styling
-            if (resultText.toLowerCase().includes("safe")) {
-                showResult(resultText, "safe");
-            } else if (resultText.toLowerCase().includes("unsafe") || resultText.toLowerCase().includes("malicious")) {
-                showResult(resultText, "unsafe");
-            } else {
-                showResult(resultText, "default");
-            }
+        showResult(vtResultEl, "VirusTotal → " + resultJson.virusTotal);
+        showResult(googleResultEl, "Google Safe Browsing → " + resultJson.googleSafeBrowsing);
 
-        } catch (err) {
-            showResult(`❌ Error: ${err.message}`, "error");
-        } finally {
-            loader.style.display = "none";
-        }
+      } catch (err) {
+        showResult(vtResultEl, `❌ Error: ${err.message}`, "error");
+        googleResultEl.style.display = "none"; // Hide the other box on error
+      } finally {
+        loader.style.display = "none";
+      }
     });
 
-    function showResult(message, type) {
-        resultEl.innerText = message;
-        resultEl.className = type; // 'safe', 'unsafe', or 'error'
-        resultEl.style.display = "block";
+    function showResult(element, message, statusType = null) {
+      element.innerText = message;
+      element.style.display = "block";
+
+      const lower = message.toLowerCase();
+      // Default to 'error' (yellow/warning) for statuses that aren't explicitly safe or unsafe.
+      let type = 'error';
+
+      if (statusType) { // If a type is forced (e.g., for network errors)
+        type = statusType;
+      } else if (lower.includes("safe") || lower.includes("harmless") || lower.includes("clean")) {
+        type = "safe";
+      } else if (lower.includes("unsafe") || lower.includes("malicious") || lower.includes("suspicious") || lower.includes("phishing") || lower.includes("malware") || lower.includes("⚠️")) {
+        type = "unsafe";
+      }
+
+      element.className = `result-box ${type}`;
     }
 </script>
 </body>
