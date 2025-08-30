@@ -1,94 +1,68 @@
-🛡️ Verify MyLink
-A tool for enhancing user safety by verifying download links using trusted third-party APIs.
+# 🛡️ Verify MyLink
 
-📝 Problem Statement
-Users frequently search for and download software from the internet. Unfortunately, top search results often include malicious links that lead to malware or phishing websites. This project addresses this risk by providing a tool that verifies download links to ensure they are safe before a user proceeds.
+**Verify MyLink** is a web-based tool designed to enhance user safety by verifying download links using trusted third-party APIs.
 
-✨ Features
-URL Safety Check: Provides instant feedback on whether a link is safe or malicious.
+---
 
-Third-Party API Integration: Utilizes the VirusTotal and Google Safe Browsing APIs for real-time analysis against multiple antivirus engines and threat databases.
+## 📝 Problem Statement
 
-User-Friendly Interface: Features a simple, clean, and intuitive web interface for non-technical users to check any link.
+Users frequently search for and download software from the internet. Unfortunately, top search results often include malicious links that can lead to malware or phishing websites.  
 
-Color-Coded Results: Displays safe results in green and unsafe results in red for clear visual feedback.
+**Verify MyLink** addresses this risk by providing a tool that verifies download links to ensure they are safe before a user proceeds.
 
-🏗️ System Design
+---
+
+## ✨ Features
+
+- **URL Safety Check:** Provides instant feedback on whether a link is safe or malicious.  
+- **Third-Party API Integration:** Utilizes the VirusTotal and Google Safe Browsing APIs for real-time analysis against multiple antivirus engines and threat databases.  
+- **User-Friendly Interface:** Simple, clean, and intuitive web interface for non-technical users.  
+- **Color-Coded Results:** Displays safe results in green and unsafe results in red for clear visual feedback.  
+
+---
+
+## 🏗️ System Design
+
+### Architecture
+
 The system is composed of three main components:
 
-Architecture
-Frontend: A web page (index.html) built with HTML, CSS, and JavaScript. It provides the user interface for submitting URLs and displaying results.
+1. **Frontend:**  
+   - Built with HTML, CSS, and JavaScript.  
+   - Provides the user interface for submitting URLs and displaying results.
 
-Backend: A Spring Boot REST controller (UrlCheckController.java) written in Java. It handles requests from the frontend, communicates with the third-party APIs, analyzes the URL, and sends the results back.
+2. **Backend:**  
+   - Spring Boot REST controller written in Java (`UrlCheckController.java`).  
+   - Handles requests from the frontend, communicates with third-party APIs, analyzes URLs, and sends the results back.
 
-Third-Party APIs: The VirusTotal API and Google Safe Browsing API provide real-time analysis of URLs.
+3. **Third-Party APIs:**  
+   - VirusTotal API  
+   - Google Safe Browsing API  
 
-Workflow
-A user enters a URL into the form on the frontend.
+### Workflow
 
-The frontend sends a POST request with the URL to the backend's /check endpoint.
+1. User enters a URL in the frontend form.  
+2. Frontend sends a `POST` request with the URL to the backend `/check` endpoint.  
+3. Backend submits the URL to VirusTotal and Google Safe Browsing APIs.  
+4. APIs return an analysis report.  
+5. Backend processes the response and sends a formatted result back to the frontend.  
+6. Frontend displays the result in a color-coded box based on the analysis.  
 
-The backend submits the URL to the VirusTotal and Google Safe Browsing APIs.
+---
 
-The APIs return an analysis report.
+## 💻 Technologies Used
 
-The backend processes the API response and sends a formatted result back to the frontend.
+- **Backend:** Java 21, Spring Boot, RestTemplate, Jackson for JSON processing  
+- **Frontend:** HTML, CSS, JavaScript  
+- **APIs:** VirusTotal API, Google Safe Browsing API  
 
-The frontend displays the result in a color-coded box based on the analysis.
+---
 
-💻 Technologies Used
-Backend: Java 21, Spring Boot, RestTemplate, Jackson for JSON processing.
+## ⚙️ Prerequisites
 
-Frontend: HTML, CSS, and JavaScript.
-
-APIs: VirusTotal API and Google Safe Browsing API.
-
-⚙️ Prerequisites
-Java Development Kit (JDK) 21 or later.
-
-Apache Maven (The project uses the Maven Wrapper, so a separate installation is not required).
-
-API Keys: The application requires API keys for both VirusTotal and Google Safe Browsing. These are currently hardcoded in the src/main/java/com/cs/CyberSecurityProject/UrlCheckController.java file and may be subject to request limits.
-
-🚀 How to Run the Project
-Clone the Repository
-
-Bash
-
-git clone https://github.com/sarvesh-jhawar/verifymylink.git
-cd verifymylink/CyberSecurityProject
-Check Prerequisites
-Ensure you have JDK 21 installed by running:
-
-Bash
-
-java -version
-Run the Backend Server
-Navigate to the CyberSecurityProject directory and execute the following command using the Maven Wrapper:
-
-For Linux/macOS:
-
-Bash
-
-./mvnw spring-boot:run
-For Windows:
-
-Bash
-
-./mvnw.cmd spring-boot:run
-This command starts the Spring Boot application on port 8081.
-
-Access the Frontend
-Once the backend is running, open a web browser and go to http://localhost:8081. The frontend will be served automatically, and you can begin checking URLs.
-
-📈 Future Work
-Developing a Chrome/Firefox extension for direct browser integration.
-
-Integrating AI models to improve phishing detection.
-
-Creating and maintaining a database of trusted vendors.
-
-Deploying the tool publicly for wider access.
-
-📄 License
-This project is licensed under the Apache License, Version 2.0. See the LICENSE file for details.
+- **Java Development Kit (JDK) 21** or later  
+- **Apache Maven** (Maven Wrapper included, no separate installation required)  
+- **API Keys:**  
+  - VirusTotal API key  
+  - Google Safe Browsing API key  
+  > Keys are currently hardcoded in `src/main/java/com/cs/CyberSecurityProject/UrlCheckController.java` and may be subject to request limits.  
